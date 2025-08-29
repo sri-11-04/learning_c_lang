@@ -33,10 +33,10 @@ int main(void){
     You can do math with char just like with int.
     */
 
-    char c = 127;   // signed char max as most compilers makes the default as signed
-    printf("%d\n", c);  // prints 127
-    c += 1;      // now it overflows and makes a circular thing and converts to MIN_CHAR
-    printf("%d\n", c); //  prints -128 That’s because unsigned char is modulo 2^8 = 256.
+    char ch = 127;   // signed char max as most compilers makes the default as signed
+    printf("%d\n", ch);  // prints 127
+    ch += 1;      // now it overflows and makes a circular thing and converts to MIN_CHAR
+    printf("%d\n", ch); //  prints -128 That’s because unsigned char is modulo 2^8 = 256.
 
     /* 
     ! Quick recap so far:
@@ -127,6 +127,15 @@ int main(void){
         So s = -20 becomes an unsigned int.
         On a 32-bit system, that means:
     */
+
+    // ! bool (_Bool , bool from stdbool.h has true false)
+    _Bool true = 0;
+    _Bool false = 100; // like in python truthy value 0 false 1 and above true or less than -1 also true
+
+    printf("%d\n",true); // these bools will be always promoted to int
+    printf("%d\n",false);
+
+    printf("%d\n",(5<6)); // 0 or 1 only
 
 
     return 0;
