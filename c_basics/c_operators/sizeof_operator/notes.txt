@@ -1,0 +1,6 @@
+9. Sizeof Operator
+
+Gives size of a data type or variable in bytes.
+
+printf("%zu", sizeof(int)); // size_t type is %zu 
+

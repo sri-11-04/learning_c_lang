@@ -1,0 +1,11 @@
+6. Increment & Decrement
+
+++ increase by 1
+
+-- decrease by 1
+
+👉 Pre vs Post:
+
+++x → increment first, then use value
+
+x++ → use value, then increment

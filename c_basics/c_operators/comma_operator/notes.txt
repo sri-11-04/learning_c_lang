@@ -1,0 +1,4 @@
+8. Comma Operator
+
+Evaluates multiple expressions, result is the last one.
+int x = (1, 2, 3);  // x = 3

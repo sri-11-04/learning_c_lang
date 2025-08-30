@@ -1,0 +1,11 @@
+3. Logical Operators
+
+Combine conditions (used a lot in if statements).
+
+&& logical AND
+
+|| logical OR
+
+! logical NOT
+
+👉 Example: (a > 5 && b < 10)

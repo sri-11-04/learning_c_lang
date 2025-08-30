@@ -1,0 +1,53 @@
+🧠 getchar() – Read a Character from Input
+Purpose: Reads a single character from standard input (usually the keyboard).
+
+Syntax:
+int ch = getchar();
+
+Returns: The character read, as an int. If there's an error or end-of-file, it returns EOF.
+
+Example:
+#include <stdio.h>
+
+int main() {
+    char c;
+    printf("Enter a character: ");
+    c = getchar();
+    printf("You entered: ");
+    putchar(c);
+    return 0;
+}
+
+
+📤 putchar() – Write a Character to Output
+Purpose: Outputs a single character to standard output (usually the screen).
+
+Syntax:
+putchar(ch);
+
+Parameter: A character (or its ASCII value) to print.
+
+Returns: The character printed as an int, or EOF if there's an error.
+
+Example:
+#include <stdio.h>
+
+int main() {
+    char c = 'A';
+    putchar(c);  // prints A
+    putchar('\n');  // prints a newline
+    return 0;
+}
+
+🔄 Common Use Case: Echo Input Until Enter
+#include <stdio.h>
+
+int main() {
+    int ch;
+    printf("Type something (press Enter to stop):\n");
+    while ((ch = getchar()) != '\n') {
+        putchar(ch);
+    }
+    return 0;
+}
+This reads each character until you hit Enter, and echoes it back—great for understanding character-by-character input.

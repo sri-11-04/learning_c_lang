@@ -1,0 +1,105 @@
+In C, we usually use the stdio.h (standard input/output) library for I/O operations.
+
+1. Printing Output (printf)
+
+The printf function is used to display output on the screen.
+
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");   // prints text
+    printf("Number: %d\n", 10);  // %d is placeholder for integers
+    printf("Float: %.2f\n", 3.14159); // %.2f = print float with 2 decimals
+    return 0;
+}
+
+
+Common Format Specifiers:
+%d → integer (int)
+%f → float (default 6 decimals)
+%.2f → float (2 decimals)
+%c → single character
+%s → string
+%ld → long integer
+%u → unsigned int
+%p → pointer (memory address)
+
+2. Taking Input (scanf)
+
+The scanf function is used to get input from the user.
+
+#include <stdio.h>
+
+int main() {
+    int age;
+    float height;
+    char name[20];
+
+    printf("Enter your age: ");
+    scanf("%d", &age);   // &age gives address of variable
+
+    printf("Enter your height: ");
+    scanf("%f", &height);
+
+    printf("Enter your name: ");
+    scanf("%s", name);   // strings don’t need &
+
+    printf("\nHello %s, age %d, height %.2f\n", name, age, height);
+    return 0;
+}
+
+⚠️ Important:
+Always use & before variable names in scanf (except for strings/arrays).
+scanf("%s", name) stops reading at space. (So “Sri Annamalai” → only “Sri”).
+
+
+3. Character Input/Output (getchar, putchar)
+
+For reading and writing a single character:
+
+#include <stdio.h>
+
+int main() {
+    char ch;
+
+    printf("Enter a character: ");
+    ch = getchar();   // read single character
+
+    printf("You entered: ");
+    putchar(ch);      // print single character
+    return 0;
+}
+
+
+4. String Input (gets, fgets)
+
+gets is unsafe (can cause buffer overflow), so use fgets.
+
+#include <stdio.h>
+
+int main() {
+    char name[50];
+
+    printf("Enter your full name: ");
+    fgets(name, sizeof(name), stdin);  // reads spaces too
+
+    printf("Hello, %s", name);
+    return 0;
+}
+
+✅ So, in summary:
+
+printf → for output
+
+scanf → for input
+
+getchar / putchar → single character I/O
+
+fgets → safe string input
+
+
+in C 
+
+char arr[] = "hello world" will automatically adds a \0 to it like "hello world\0"
+but
+char arr[] = {'h','e','l','l','o',' ','w','o','r','l','d'}; needs manual addition of '\0' at the end else the strlen wont work right

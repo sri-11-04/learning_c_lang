@@ -1,0 +1,20 @@
+1. Arithmetic Operators
+
+Used for math operations.
+
++ addition
+
+- subtraction
+
+* multiplication
+
+/ division  (integer division if both operands are int)
+
+% modulus (remainder)
+Modulus with negatives (just FYI, not needed in this challenge)
+In C, % follows the sign of the dividend.
+Example: -7 % 3 = -1.
+
+👉 Example: 5 % 2 = 1
+
+no ** (exp or pow) instead has pow from math.h

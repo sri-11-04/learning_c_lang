@@ -1,0 +1,17 @@
+4. Bitwise Operators
+
+Operate bit by bit. Very powerful in low-level programming.
+
+& bitwise AND
+
+| bitwise OR
+
+^ bitwise XOR (exclusive OR)
+
+~ bitwise NOT (1’s complement)
+
+<< left shift
+
+>> right shift
+
+👉 Example: 5 & 3 = 1

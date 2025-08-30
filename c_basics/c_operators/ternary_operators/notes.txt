@@ -1,0 +1,7 @@
+7. Conditional (Ternary) Operator
+
+Short form of if-else:
+(condition) ? value_if_true : value_if_false
+
+👉 Example:
+int max = (a > b) ? a : b;
