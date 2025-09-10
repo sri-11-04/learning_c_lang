@@ -53,6 +53,9 @@ ID: 102, Name: Bob, Salary: 60000.00
 #include <stdio.h>
 #include <stdlib.h>
 
+
+const int COUNT = 3;
+
 typedef struct
 {
     unsigned int dept_id;
@@ -67,23 +70,75 @@ typedef struct
     Department *department;
 }Employee;
 
-typedef Department dept_array[3];
 
 void fill_Employee(Employee *emp)
 {
     printf("ID: ");
     scanf("%u",&emp->emp_id);
+    getchar();
     printf("Name: ");
-    scanf("%99[^\n]"); // replacement is fgets(var,size_var,stdin); with removing the \n afterwards and before it we need to clear terminal using getchar()
+    scanf("%99[^\n]",emp->name); // replacement is fgets(var,size_var,stdin); with removing the \n afterwards and before it we need to clear terminal using getchar()
     printf("Salary: ");
     scanf("%lf",&emp->salary);
-    printf(""); // ! continue here
+    printf("Dept ID: ");
+    scanf("%u",&emp->department->dept_id);
+    getchar();
+    printf("Dept Name: ");
+    scanf("%99[^\n]",emp->department->dept_name); 
+}
+
+void fill_arr(Employee arr[],int n){
+    for (int i = 0;i<n;i++){
+        printf("Enter Employee %d details:\n",i+1);
+        (arr+i)->department = malloc(sizeof(Department));
+        fill_Employee(arr+i);
+        putchar('\n');
+    }
+}
+
+Employee* copy_employee(Employee arr[],int n){
+    Employee *new_arr=malloc(n * sizeof(Employee));
+    for (int i = 0;i<n;i++){
+        *(new_arr+i) = *(arr+i);
+    } 
+    return new_arr;
+}
+
+void sort_emp(Employee arr[],int n){
+    for (int i = 1;i<n;i++){
+        Employee cur = *(arr+i);
+        int j = i-1;
+
+        while (j>=0 && (arr+j)->department->dept_id > cur.department->dept_id){
+            *(arr+j+1) = *(arr+j);
+            j--;
+        }
+        *(arr+j+1) = cur;
+    }
+}
+
+void print_employee(Employee arr[],int n){
+    Employee* copy = copy_employee(arr,n);
+    sort_emp(copy,n);
+    for (int i = 0;i<n;i++){
+        if (i==0 || (copy+i)->department->dept_id != (copy+i-1)->department->dept_id){printf("--- Department: %s ---\n",(copy+i)->department->dept_name);}
+        printf("ID: %u, Name: %s, Salary: %.2lf\n",(copy+i)->emp_id,(copy+i)->name,(copy+i)->salary);
+        if (i<n-1 && (copy+i)->department->dept_id != (copy+i+1)->department->dept_id)putchar('\n');
+    }
+    free(copy);
+}
+
+void free_mem(Employee arr[],int n){
+    for (int i = 0;i<n;i++){
+        free((arr+i)->department);
+    }
 }
 
 int main(void)
 {
-    dept_array arr;
-
-
+    Employee arr[COUNT];
+    fill_arr(arr,COUNT);
+    print_employee(arr,COUNT);
+    free_mem(arr,COUNT);
     return 0;
 }
