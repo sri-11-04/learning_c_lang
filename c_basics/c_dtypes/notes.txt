@@ -1,0 +1,57 @@
+🔹 Standard Arithmetic Types
+
+Integer types
+
+char, signed char, unsigned char
+
+short, unsigned short
+
+int, unsigned int
+
+long, unsigned long
+
+long long, unsigned long long
+
+Floating-point types
+
+float
+
+double
+
+long double (higher precision, implementation dependent)
+
+Boolean type (C99)
+
+_Bool (with <stdbool.h> → bool, true, false)
+
+🔹 Derived Types
+
+These are built from the standard ones:
+
+Pointers (int *p;)
+
+Arrays (int arr[10];)
+
+Functions (int func(void);)
+
+Structures (struct Point { int x, y; };)
+
+Unions (union Data { int i; float f; };)
+
+Enumerations (enum Color { RED, GREEN, BLUE };)
+
+🔹 Special Types
+
+void → “no type” (used for functions with no return or pointers to unknown type).
+
+Typedef (not a new type, but lets you create aliases).
+
+⚠️ In modern C, you’ll mostly deal with:
+
+int, long long, unsigned long long
+
+float, double, long double
+
+bool
+
+Pointers, arrays, structs

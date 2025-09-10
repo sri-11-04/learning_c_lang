@@ -1,0 +1,128 @@
+In C programming, a struct (short for structure) is a user-defined data type that allows you to group together variables of different data types under a single name.
+
+It’s like a container that can hold multiple related values, but unlike an array, the values inside a struct can have different data types.
+
+
+syntax:
+
+struct StructName {
+    data_type member1;
+    data_type member2;
+    data_type member3;
+    // ... more members
+};
+
+StructName → the name of the structure type.
+
+member1, member2, … → fields (variables inside the struct).
+
+
+eg:
+
+#include <stdio.h>
+
+// Define a structure
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    // Declare a variable of type struct Student
+    struct Student s1;
+
+    // Assign values
+    s1.rollNo = 101;
+    snprintf(s1.name, sizeof(s1.name), "Alice"); // safer than strcpy
+    s1.marks = 92.5;
+
+    // Print values
+    printf("Roll No: %d\n", s1.rollNo);
+    printf("Name: %s\n", s1.name);
+    printf("Marks: %.2f\n", s1.marks);
+
+    return 0;
+}
+
+📌 Output:
+
+Roll No: 101
+Name: Alice
+Marks: 92.50
+
+
+✅ Key Points about struct:
+
+Can store different data types together.
+
+Example: int, char, float in one struct.
+
+Memory is allocated for all members.
+
+Each member occupies its own memory.
+
+Access members with . (dot operator).
+
+s1.rollNo
+s1.name
+
+You can also create arrays of structures:
+
+struct Student class[30]; // array of 30 students
+
+
+In C (not C++), you cannot directly define functions inside a struct like you do in a class.
+A struct in C is only a collection of data members (variables), not methods.
+
+But… you can simulate class-like behavior using function pointers inside structs.
+This is one of the tricks used in C to mimic object-oriented programming (OOP).
+
+📌 Example: Function inside struct using function pointer
+
+#include <stdio.h>
+
+// Define struct with a function pointer
+struct Rectangle {
+    int length;
+    int width;
+
+    // function pointer (acts like a method)
+    int (*area)(struct Rectangle *self);
+};
+
+// Function that calculates area
+int calcArea(struct Rectangle *self) {
+    return self->length * self->width;
+}
+
+int main() {
+    struct Rectangle r1;
+
+    // Assign values
+    r1.length = 10;
+    r1.width = 5;
+
+    // Assign function to struct "method"
+    r1.area = calcArea;
+
+    // Call like a class method
+    printf("Area = %d\n", r1.area(&r1));
+
+    return 0;
+}
+
+
+✅ Key Points:
+
+The struct contains a function pointer, which points to a real function.
+
+r1.area(&r1) looks like a method call in OOP.
+
+This is how C libraries (like GTK, Linux kernel) implement object-oriented patterns before C++.
+
+👉 So in short:
+
+C struct cannot have functions inside directly.
+
+But you can add function pointers and simulate class methods.
