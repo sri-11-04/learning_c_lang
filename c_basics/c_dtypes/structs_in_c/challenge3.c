@@ -100,6 +100,9 @@ Employee* copy_employee(Employee arr[],int n){
     Employee *new_arr=malloc(n * sizeof(Employee));
     for (int i = 0;i<n;i++){
         *(new_arr+i) = *(arr+i);
+        // copying Department pointer
+        (new_arr+i)->department = malloc(sizeof(Department));
+        *((new_arr+i)->department) = *((arr+i)->department);
     } 
     return new_arr;
 }
@@ -117,6 +120,12 @@ void sort_emp(Employee arr[],int n){
     }
 }
 
+void free_mem(Employee arr[],int n){
+    for (int i = 0;i<n;i++){
+        free((arr+i)->department);
+    }
+}
+
 void print_employee(Employee arr[],int n){
     Employee* copy = copy_employee(arr,n);
     sort_emp(copy,n);
@@ -125,20 +134,24 @@ void print_employee(Employee arr[],int n){
         printf("ID: %u, Name: %s, Salary: %.2lf\n",(copy+i)->emp_id,(copy+i)->name,(copy+i)->salary);
         if (i<n-1 && (copy+i)->department->dept_id != (copy+i+1)->department->dept_id)putchar('\n');
     }
+    // freeing depatment memory
+    free_mem(copy,n);
     free(copy);
 }
 
-void free_mem(Employee arr[],int n){
-    for (int i = 0;i<n;i++){
-        free((arr+i)->department);
-    }
-}
+
+/* 
+* Notes: if we want to copy a nested struct with pointer we need to manually implement a deep copy 
+  by allocating a new memory it and copying the content to it.
+*/
+
 
 int main(void)
 {
     Employee arr[COUNT];
     fill_arr(arr,COUNT);
     print_employee(arr,COUNT);
+    // freeing department memory
     free_mem(arr,COUNT);
     return 0;
 }
