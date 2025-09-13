@@ -44,19 +44,23 @@ int multiply(int a, int b);
 float divide(int a, int b);
 
 int main(void){
-    int a,b;
-    char op;
-
-    printf("Enter first number: ");
-    scanf("%d",&a);
-
-    printf("Enter second number: ");
-    scanf("%d",&b);
-
-    printf("Enter operator (+, -, *, /): ");
-    scanf(" %c",&op);
-
-    // switch()
+    
 
     return 0;
+}
+
+int add(int a,int b){
+    return a+b;
+}
+
+int subtract(int a,int b){
+    return a-b;
+}
+
+int multiply(int a,int b){
+    return a*b;
+}
+
+float divide(int a,int b){
+    return (float) a/b;
 }
