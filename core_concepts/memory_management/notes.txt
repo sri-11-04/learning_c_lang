@@ -1,0 +1,46 @@
+🔹 Memory in C (Stack vs Heap)
+
+When you write a C program, memory is divided into main regions:
+
+Stack
+
+Stores local variables inside functions.
+
+Grows/shrinks automatically as functions are called/returned.
+
+Example:
+void foo() {
+    int x = 10;   // stored on stack
+}
+
+
+Heap
+
+For dynamic memory allocation (malloc, calloc, free).
+
+You control its lifetime manually (must free it).
+
+Example:
+int *p = malloc(10 * sizeof(int));  // stored on heap
+
+
+Data Segment
+
+Global/static variables live here.
+
+Example:
+int g = 42;  // stored in data segment
+
+Code/Text Segment
+
+Stores the compiled machine code.
+
+🔹 The sizeof Operator
+
+Tells you how many bytes a type or variable occupies.
+
+Example:
+
+printf("%zu\n", sizeof(int));   // usually 4
+printf("%zu\n", sizeof(double)); // usually 8
+📌 sizeof result is of type size_t (an unsigned integer type). type delimeter is zu

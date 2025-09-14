@@ -1,0 +1,25 @@
+syntax:
+
+switch (expression) {
+    case constant1:
+        // code block
+        break;
+    case constant2:
+        // code block
+        break;
+    ...
+    default:
+        // code block if no case matches
+}
+
+
+
+🔹 Key Points
+
+switch works only with integral types: int, char, enum (not float or double).
+
+case labels must be unique constants (no variables allowed).
+
+Without break, execution continues into the next case (fall-through).
+
+default is optional but good practice.

@@ -1,0 +1,82 @@
+a enum is nothing but a const variable inside a struct with a default value of int 0 - n 
+written in , sep
+
+🔹 What is an enum in C?
+
+enum (short for enumeration) is a user-defined data type in C.
+
+It lets you assign names to integer constants, making code more readable.
+
+🔹 Syntax
+
+enum enum_name {
+    value1,
+    value2,
+    value3,
+    ...
+};
+By default, value1 = 0, value2 = 1, and so on.
+
+You can explicitly assign values too.
+
+🔹 Example 1: Basic Enum
+
+#include <stdio.h>
+
+enum Days { MON, TUE, WED, THU, FRI, SAT, SUN };
+
+int main() {
+    enum Days today = WED;
+    printf("Today is day number: %d\n", today); // Output: 2
+    return 0;
+}
+👉 Here MON=0, TUE=1, WED=2 …
+
+
+🔹 Example 2: Custom Values
+#include <stdio.h>
+
+enum Status { SUCCESS = 1, FAILURE = -1, PENDING = 0 };
+
+int main() {
+    enum Status s = FAILURE;
+    printf("Status code: %d\n", s); // Output: -1
+    return 0;
+}
+
+
+🔹 Example 3: Enums in Switch
+
+Enums are very handy in switch-case.
+
+#include <stdio.h>
+
+enum TrafficLight { RED, YELLOW, GREEN };
+
+int main() {
+    enum TrafficLight signal = GREEN;
+
+    switch (signal) {
+        case RED:
+            printf("Stop!\n");
+            break;
+        case YELLOW:
+            printf("Get Ready!\n");
+            break;
+        case GREEN:
+            printf("Go!\n");
+            break;
+    }
+    return 0;
+}
+
+
+🔹 Key Points
+
+Underlying type → Always int in C (C doesn’t allow changing it like C++).
+
+Readability → Names instead of magic numbers.
+
+Scope → Enum constants are in the same scope as variables, so avoid name conflicts.
+
+Memory → Just like an int, no extra memory overhead.
