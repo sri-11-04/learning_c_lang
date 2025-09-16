@@ -43,30 +43,32 @@ Element 1 address: 0x7ffd62c8
 
 #include <stdio.h>
 
-typedef enum{
-    INT,
-    CHAR,
-    DOUBLE
-}Types;
-
-void print_arr(void *arr,Types type);
 
 int main(void){
     int arr_int[] = {1,2,3,4,5};
-    char arr_char[] = {'h','e','l','l','o','\0'};
+    char arr_char[] = "hello";
     double arr_double[] = {1,2,3,4,5};
+    int n;
 
-    print_arr(arr_int,INT);
+    n = sizeof(arr_int)/sizeof(*arr_int);
+    printf("int array: total size = %zu, element size = %zu, count = %d\n",sizeof(arr_int),sizeof(*arr_int),n);
+    for (int i = 0;i<n;i++){
+        printf("Element %d address: %p\n",i,arr_int+i);
+    }
+    putchar('\n');
 
-    print_arr(arr_char,CHAR);
+    n = sizeof(arr_char)/sizeof(*arr_char)-1;  // * manually removing the EOF's count i.e \0
+    printf("char array: total size = %zu, element size = %zu, count = %d\n",(size_t)(sizeof(arr_char)-1),sizeof(*arr_char),n);
+    for (int i = 0;i<n;i++){
+        printf("Element %d address: %p\n",i,arr_char+i);
+    }
+    putchar('\n');
 
-    print_arr(arr_double,DOUBLE);
-
-    
+    n = sizeof(arr_double)/sizeof(*arr_double);
+    printf("double array: total size = %zu, element size = %zu, count = %d\n",sizeof(arr_double),sizeof(*arr_double),n);
+    for (int i = 0;i<n;i++){
+        printf("Element %d address: %p\n",i,arr_double+i);
+    }
 
     return 0;
-}
-
-void print_arr(void *arr,Types type){
-    // need to work here
 }
