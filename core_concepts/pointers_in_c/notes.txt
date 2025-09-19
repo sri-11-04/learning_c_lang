@@ -1,0 +1,8 @@
+Next Step in Roadmap → Pointers & Indirection
+
+We’ll now explore:
+
+    Pointer basics – declaring, assigning, dereferencing.
+    Pointers with arrays – how array names behave like pointers.
+    Pointer arithmetic – stepping through memory.
+    Pointer to pointer (double pointer) – deeper indirection.
