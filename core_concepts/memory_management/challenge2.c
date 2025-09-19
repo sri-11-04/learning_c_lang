@@ -67,8 +67,21 @@ int main(void){
     n = sizeof(arr_double)/sizeof(*arr_double);
     printf("double array: total size = %zu, element size = %zu, count = %d\n",sizeof(arr_double),sizeof(*arr_double),n);
     for (int i = 0;i<n;i++){
-        printf("Element %d address: %p\n",i,arr_double+i);
+        printf("Element %d address: %p\n",i,arr_double+i); // ! the %p place holder will expect a (void *) in std c compiler so better to use it like that
     }
 
     return 0;
 }
+
+
+
+/* 
+
+👉 From this, you’ll see how:
+
+int moves by 4 bytes,
+
+char moves by 1 byte,
+
+double moves by 8 bytes.
+*/
