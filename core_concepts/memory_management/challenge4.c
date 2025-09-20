@@ -1,18 +1,5 @@
 /* 
-👉 Write a program that:
-
-Asks the user for n.
-
-Dynamically allocates memory for n integers.
-
-Reads values into the array.
-
-Prints them back.
-
-Frees the memory.
-
-
-⚡ Challenge 8 (next step):
+⚡ Challenge 4 (next step):
 👉 Modify this program so that after the array is created and filled:
 
 Ask the user for extra elements to add.
@@ -47,10 +34,6 @@ int main(void){
     scanf("%d",&extra);
     if (extra>0){
         resize(&arr,n+extra);
-        if (arr == NULL){
-            printf("Error while creating memory.\n");
-            return 1;
-        }
         read_int_arr(arr,n+extra,n);
         print_int_arr(arr,n+extra);
     }
@@ -63,11 +46,14 @@ void create_memory(int **p,int size){
 }
 
 void resize(int **p,int size){
-    *p = realloc(*p,size * sizeof **p);
+    int *temp = realloc(*p,size * sizeof **p);
+    if (temp != NULL){
+        *p = temp;
+    }
 }
 
 void read_int_arr(int *arr,int n,int start){
-    for (int i = 0+start+(start) ? 1 : 0;i<n;i++){
+    for (int i = 0+start;i<n;i++){
         printf("Enter %dth element: ",i);
         scanf("%d",arr+i);
     }
@@ -80,3 +66,24 @@ void print_int_arr(int *arr,int n){
     }
     printf("]\n");
 }
+
+
+/* 
+Check realloc carefully
+If realloc fails, it returns NULL but the original pointer remains valid.
+In your current code:
+resize(&arr, n+extra);
+if (arr == NULL) {
+    printf("Error while creating memory.\n");
+    return 1;
+}
+👉 Here, if realloc fails, arr is still the old pointer (not NULL).
+To be 100% safe, resize should use a temporary pointer:
+void resize(int **p, int size) {
+    int *tmp = realloc(*p, size * sizeof **p);
+    if (tmp != NULL) {
+        *p = tmp;
+    }
+}
+This way, you don’t lose the original block if realloc fails.
+*/
