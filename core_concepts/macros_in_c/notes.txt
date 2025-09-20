@@ -1,0 +1,88 @@
+🔹 2. What are Macros?
+
+A macro is a piece of code replaced by its value before compilation.
+They are defined using #define.
+
+2.1 Object-like Macros (like constants)
+
+#define PI 3.14159
+#define MAX 100
+
+➡ Whenever the compiler sees PI, it replaces it with 3.14159.
+➡ It’s just text substitution, not a variable.
+
+Example:
+
+#include <stdio.h>
+#define PI 3.14159
+
+int main() {
+    printf("Value of PI: %f\n", PI);  // gets replaced with 3.14159
+    return 0;
+}
+
+2.2 Function-like Macros
+#define SQUARE(x) ((x) * (x))
+
+➡ Works like a function, but replaced at compile-time.
+
+Example:
+#include <stdio.h>
+#define SQUARE(x) ((x) * (x))
+
+int main() {
+    printf("%d\n", SQUARE(5));      // becomes (5 * 5)
+    printf("%d\n", SQUARE(3+2));    // becomes ((3+2) * (3+2)) = 25
+    return 0;
+}
+
+⚠️ Caution: Because it’s just text substitution, sometimes it causes unexpected results:
+
+#define SQUARE(x) (x * x)
+printf("%d\n", SQUARE(3+2));   // expands to (3+2 * 3+2) = 3 + (2*3) + 2 = 11 ❌
+
+That’s why we usually put extra parentheses: ((x) * (x)).
+
+2.3 Macros with Arguments
+
+You can also use them like inline functions:
+
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+int main() {
+    int x = 10, y = 20;
+    printf("Max: %d\n", MAX(x, y));  // expands to ((x) > (y) ? (x) : (y))
+}
+
+🔹 3. Special Predefined Macros in C
+
+C has some built-in macros:
+
+__FILE__ → Current filename (string).
+
+__LINE__ → Current line number.
+
+__DATE__ → Compilation date.
+
+__TIME__ → Compilation time.
+
+Example:
+
+#include <stdio.h>
+
+int main() {
+    printf("File: %s\n", __FILE__);
+    printf("Line: %d\n", __LINE__);
+    printf("Date: %s\n", __DATE__);
+    printf("Time: %s\n", __TIME__);
+    return 0;
+}
+
+🔹 4. Preprocessor vs Macros
+
+Preprocessor = Handles all # directives before compilation.
+
+Macros = One of the preprocessor’s tools for substitution.
+
+
+macros are nothing but they are defined at the top of the file with #define TEXT optional value (no types are needed which is the down side of the macros)
