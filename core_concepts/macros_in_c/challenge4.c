@@ -41,12 +41,25 @@ Try printing different types: strings, integers, floats.
 
 */
 
-// ! need to script
+
 #include <stdio.h>
 
-#define DEBUG
-#ifdef DEBUG
-    #define LOG(msg) printf("Log")
-#else
+#define SQUARE(num) ((num)*(num))
 
+#ifdef DEBUG
+    #define LOG(msg) printf("Log: User entered: %.2lf\n",msg)
+    //  #define LOG(fmt, ...) do { \  // fmt is a string litral and ... is varargs 
+    //     printf("LOG: " fmt "\n", __VA_ARGS__); \ // i think in c we can do "helo" "hi" "guys" => "hello"+"hi"+"guys"
+    // } while(0)
+#else
+    #define LOG(msg)
 #endif
+
+int main(void){
+    double num;
+    printf("Enter a number: ");
+    scanf("%lf",&num);
+    LOG(num);
+    printf("Number squared: %.2lf\n",SQUARE(num));
+    return 0;
+}
