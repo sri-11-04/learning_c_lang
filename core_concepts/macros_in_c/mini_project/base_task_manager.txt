@@ -1,0 +1,43 @@
+🔹 Step 1: Base Task Manager
+Requirements
+
+    Define a struct Task with:
+
+        int id
+
+        char name[100]
+
+        int completed (0 = not done, 1 = done).
+
+Keep an array of tasks (limit 100 for now).
+
+Menu:
+
+    Add Task
+
+    View Tasks
+
+    Exit
+
+Each new task gets an incremental ID (1, 2, 3...).
+
+Example Run
+
+1. Add Task
+2. View Tasks
+3. Exit
+Choose: 1
+Enter task name: Learn macros
+Task added!
+
+1. Add Task
+2. View Tasks
+3. Exit
+Choose: 2
+[1] Learn macros - Pending
+
+1. Add Task
+2. View Tasks
+3. Exit
+Choose: 3
+Goodbye!
