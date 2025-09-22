@@ -1,0 +1,245 @@
+🔹 What is File Handling?
+
+In C, file handling allows us to create, open, read, write, and close files using the standard I/O library (stdio.h).
+This lets your program store data permanently (in files) instead of keeping it only in memory (which is lost when the program ends).
+
+
+🔹 File Operations in C
+
+The standard operations are:
+
+Create / Open a file
+
+Read from a file
+
+Write into a file
+
+Close a file
+
+🔹 File Pointer
+
+C uses a special pointer called FILE * to access files.
+
+FILE *fp;
+
+This pointer is used with all file functions.
+
+🔹 Opening a File
+
+You use fopen() to open a file:
+
+FILE *fopen(const char *filename, const char *mode);
+
+Common Modes:
+
+"r" → Open file for reading (must exist).
+
+"w" → Open file for writing (creates new file or overwrites existing).
+
+"a" → Open file for appending (creates if not exists).
+
+"r+" → Open for reading and writing (must exist).
+
+"w+" → Open for reading and writing (creates/overwrites).
+
+"a+" → Open for reading and appending (creates if not exists).
+
+🔹 Writing to a File
+
+Example:
+
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    fp = fopen("example.txt", "w");  // open for writing
+    
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    fprintf(fp, "Hello, File Handling in C!\n");
+    fputs("This is another line.\n", fp);
+
+    fclose(fp);  // close the file
+    return 0;
+}
+This creates a file example.txt and writes text into it.
+
+🔹 Reading from a File
+
+Example:
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char buffer[100];
+
+    fp = fopen("example.txt", "r");  // open for reading
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    while (fgets(buffer, 100, fp) != NULL) {
+        printf("%s", buffer);  // print each line
+    }
+
+    fclose(fp);
+    return 0;
+}
+
+** the fgets return null if there is no content else return the line content
+
+
+🔹 Character Functions
+
+fgetc(fp) → read one character  returns EOF (-1) at the end of the line
+
+fputc(ch, fp) → write one character
+
+🔹 Binary File Functions
+
+fread(ptr, size, count, fp) → read binary data
+
+fwrite(ptr, size, count, fp) → write binary data
+
+🔹 Closing a File
+
+Always close files after use:
+fclose(fp);
+
+
+🔹 fprintf in C
+
+The function fprintf is used to write formatted output to a file.
+It works just like printf, but instead of printing to the screen (stdout), it writes to a file stream.
+
+✅ Function Signature
+int fprintf(FILE *stream, const char *format, ...);
+
+stream → the file pointer (e.g., fp).
+
+format → a format string (just like in printf).
+
+... → values to substitute into the format string.
+
+It returns the number of characters written (or a negative value if an error occurs).
+
+✅ Example
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("data.txt", "w");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    int age = 25;
+    char name[] = "Alice";
+
+    fprintf(fp, "Name: %s\n", name);
+    fprintf(fp, "Age: %d\n", age);
+
+    fclose(fp);
+
+    return 0;
+}
+
+📌 This writes:
+Name: Alice
+Age: 25
+
+into data.txt.
+
+✅ Difference from Other File Writing Functions
+
+printf → prints to stdout (screen).
+
+fprintf → prints to a file stream.
+
+fputs → writes a string (no formatting).
+
+fputc → writes a single character.
+
+So:
+
+printf("Age: %d", age);      // prints on screen
+fprintf(fp, "Age: %d", age); // writes into file
+
+
+🔹 sprintf
+
+Purpose: Write formatted output into a string instead of printing to the screen or writing to a file.
+
+✅ Syntax
+int sprintf(char *str, const char *format, ...);
+
+
+str → the character array where the output will be stored.
+
+format → format string (like printf/fprintf).
+
+... → values to insert into the format.
+
+It returns the number of characters written (excluding the null terminator \0).
+
+✅ Example
+
+#include <stdio.h>
+
+int main() {
+    char buffer[50];
+    int age = 25;
+    char name[] = "Alice";
+
+    sprintf(buffer, "Name: %s, Age: %d", name, age);
+
+    printf("%s\n", buffer);  // prints: Name: Alice, Age: 25
+    return 0;
+}
+
+Be careful: sprintf does not check buffer size, so it can overflow if the string is too large.
+
+🔹 snprintf
+
+Purpose: Safer version of sprintf. You provide the maximum size of the buffer, preventing overflow.
+
+✅ Syntax
+
+int snprintf(char *str, size_t size, const char *format, ...);
+
+str → the character array where output goes.
+
+size → maximum number of characters to write (including \0).
+
+format → format string.
+
+... → values to insert.
+
+It returns the number of characters that would have been written if the buffer were large enough (excluding \0).
+
+✅ Example
+
+#include <stdio.h>
+
+int main() {
+    char buffer[10];  // small buffer
+    int age = 25;
+
+    int n = snprintf(buffer, sizeof(buffer), "Age: %d", age);
+    printf("Buffer: %s\n", buffer); // prints: Age: 25
+    printf("Total needed chars: %d\n", n); // prints: 6
+    return 0;
+}
+
+
+🔹 Quick Summary
+Function	Output Goes To	Safety Notes
+printf	Screen (stdout)	Safe
+fprintf	File (FILE *)	Safe
+sprintf	String (char[])	Unsafe if buffer too small
+snprintf	String (char[])	Safe, prevents overflow

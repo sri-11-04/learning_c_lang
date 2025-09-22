@@ -1,0 +1,5 @@
+hello sri annamalai
+this is your story!!
+now you are going to learn
+file handling in C
+then in c++

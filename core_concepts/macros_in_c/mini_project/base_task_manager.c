@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+#ifdef DEBUG
+    #define LOG(frmt,...) do { printf("[%s:%d | %s %s] Log: " frmt "\n",__FILE__,__LINE__,__DATE__,__TIME__, ##__VA_ARGS__);} while (0)
+#else
+    #define LOG(frmt,...)
+#endif
+
+typedef struct TaskManager TaskManager;
 
 typedef enum{
     INCOMPLETE,
@@ -14,27 +21,26 @@ typedef struct{
 
 typedef Task Data[100];
 
+
 struct TaskManager{
     int size;
     int capacity;
     int serial;
     Data task_arr;
-    int (*increment)(struct TaskManager *self);
-    _Bool (*add_task)(struct TaskManager *self, Task *task);
-    void (*view_task)(struct TaskManager *self);
+    int (*increment)(TaskManager *self);
+    _Bool (*add_task)(TaskManager *self, Task *task);
+    void (*view_task)(TaskManager *self);
 };
 
-static int increment(struct TaskManager *self);
-static _Bool add_task(struct TaskManager *self,Task *task);
-static void view_task(struct TaskManager *self);
+static int increment(TaskManager *self);
+static _Bool add_task(TaskManager *self,Task *task);
+static void view_task(TaskManager *self);
 
 int main(void){
-    Data arr;
-    struct TaskManager task_manager ;
+    TaskManager task_manager ;
     task_manager.size=0;
     task_manager.capacity=100;
     task_manager.serial=1;
-    *task_manager.task_arr = *arr;
     task_manager.increment = increment;
     task_manager.add_task = add_task;
     task_manager.view_task = view_task;
@@ -49,7 +55,7 @@ int main(void){
             case 1:
                 printf("Enter task name: ");
                 scanf(" %99[^\n]",task.name);
-                printf("[%d] %s %s\n",__LINE__,__TIME__,task.name);
+                LOG("Task name captured: %s",task.name);
                 task.status = INCOMPLETE;
                 if (task_manager.add_task(&task_manager,&task)){
                     printf("Task added!\n");
@@ -73,15 +79,16 @@ int main(void){
     return 0;
 }
 
-static int increment(struct TaskManager *self) {return self->serial++;}
-static _Bool add_task(struct TaskManager *self,Task *task){
+static int increment(TaskManager *self) {return self->serial++;}
+static _Bool add_task(TaskManager *self,Task *task){
     if (self->size == self->capacity) return 0;
     task->id = self->increment(self);
     *(self->task_arr+self->size) = *task;
     self->size++;
     return 1;
 }
-static void view_task(struct TaskManager *self){
+static void view_task(TaskManager *self){
+    if (!self->size) printf("No tasks to show!!\n");
     for (int i = 0;i<self->size;i++){
         printf("[%d] %s - %s\n",(self->task_arr+i)->id,(self->task_arr+i)->name,((self->task_arr+i)->status) ? "Completed" : "Pending");
     }
