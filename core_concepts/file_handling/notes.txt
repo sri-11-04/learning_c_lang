@@ -243,3 +243,6 @@ printf	Screen (stdout)	Safe
 fprintf	File (FILE *)	Safe
 sprintf	String (char[])	Unsafe if buffer too small
 snprintf	String (char[])	Safe, prevents overflow
+
+
+**1. rewind(FILE *file) => makes the pointer from the end to start of the file
