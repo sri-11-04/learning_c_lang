@@ -245,4 +245,5 @@ sprintf	String (char[])	Unsafe if buffer too small
 snprintf	String (char[])	Safe, prevents overflow
 
 
-**1. rewind(FILE *file) => makes the pointer from the end to start of the file
+**1. rewind(FILE *file) => makes the pointer from the end to start of the file 
+NOTE: works only on open file

@@ -3,3 +3,9 @@ this is your story!!
 now you are going to learn
 file handling in C
 hello whill this increase the count?
+hey i appending 1st line
+this is second line
+this would be third line
+hey all
+will this work?
+i think it would
