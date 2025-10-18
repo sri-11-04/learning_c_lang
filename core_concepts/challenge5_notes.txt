@@ -1,0 +1,113 @@
+🧩 Challenge 5 — Student Database System
+🎯 Goal
+
+Create a simple program that manages student records — add, view, search, and save them permanently using file handling.
+
+🧠 Description
+
+You’ll design a menu-driven program that can:
+
+Add new students → Input details and store them in a file.
+
+Display all students → Read and print from file.
+
+Search a student by roll number.
+
+Delete all records (clear the file).
+
+Exit → Safely close the program.
+
+📋 Requirements
+
+Define a structure to hold student details:
+
+typedef struct {
+    int roll;
+    char name[50];
+    float marks;
+} Student;
+
+Use a binary file (recommended) named "students.dat" for storage,
+so that data persists even after the program exits.
+
+⚙️ Menu Example
+
+======= Student Database =======
+1. Add Student
+2. Display All Students
+3. Search Student by Roll No
+4. Delete All Records
+5. Exit
+--------------------------------
+Enter your choice: 1
+
+Each operation should call a function, e.g.:
+
+void addStudent(FILE *file);
+void displayStudents(FILE *file);
+void searchStudent(FILE *file, int roll);
+void deleteAllRecords(void);
+
+🧩 File Handling Functions
+
+Use:
+
+fopen()
+
+fwrite() return the count of the data written
+
+fread() return the count of the data read
+
+rewind()
+
+fclose() return EOF if error in closing
+
+remove() (for clearing the file) return 0 when the file removed
+
+🧱 Core Logic Hints
+
+Open file in “ab+” mode for adding/appending binary data.
+
+After adding or searching, rewind(file) before reading again.
+
+Use fwrite(&student, sizeof(Student), 1, file) and fread(&student, sizeof(Student), 1, file).
+
+Handle file open errors properly.
+
+✅ Sample Run
+
+======= Student Database =======
+1. Add Student
+2. Display All Students
+3. Search Student by Roll No
+4. Delete All Records
+5. Exit
+--------------------------------
+Enter your choice: 1
+
+Enter Roll No: 101
+Enter Name: Alice
+Enter Marks: 89.5
+✅ Student record added successfully!
+
+Enter your choice: 2
+Roll: 101  |  Name: Alice  |  Marks: 89.50
+
+Enter your choice: 3
+Enter Roll No to search: 101
+Found: Roll: 101  |  Name: Alice  |  Marks: 89.50
+
+Enter your choice: 4
+⚠️ All records deleted successfully!
+
+💡 Bonus Ideas (optional after base version works)
+
+Add “Update Student by Roll No”.
+
+Add “Sort by Marks”.
+
+Store N students at once (read/write arrays of structs).
+
+Write to text file too for human-readable reports.
+
+

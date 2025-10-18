@@ -1,0 +1,5 @@
+hello
+hi
+i am going
+to learn c
+mainly the file handling
