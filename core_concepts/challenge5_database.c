@@ -84,7 +84,7 @@ int main(void){
             case 6:
                 printf("Enter the roll you need to delete: ");
                 scanf("%d",&roll);
-                stb.deleteByRoll(self,1);
+                stb.deleteByRoll(self,roll);
                 break;
             case 7:
                 run = 0;
@@ -162,6 +162,7 @@ void deleteAllRecords(StudentDB *self){
         return;
     }
     self->canClose = 0;
+    self->db = NULL;
     printf("⚠️ All records deleted successfully!\n");
 }
 

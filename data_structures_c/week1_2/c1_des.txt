@@ -1,0 +1,64 @@
+🧩 Challenge 1 — Build Your First Singly Linked List
+🎯 Goal
+
+Build a basic singly linked list manually — using struct, malloc, and pointers — and print all node values in order.
+
+This will help you understand how dynamic memory allocation and pointer linking create flexible data structures.
+
+🧱 Concept (Hidden Learning)
+
+You’ll secretly learn:
+
+How to create custom data structures using struct
+
+How nodes connect using pointers
+
+How traversal works in a linked list (step-by-step pointer movement)
+
+📋 Requirements
+
+Define a struct Node that has:
+
+int data → stores the value
+
+struct Node *next → pointer to next node
+
+Create 3 nodes manually using malloc.
+
+Assign values (e.g., 10, 20, 30).
+
+Link them together:
+
+head → node1 → node2 → node3 → NULL
+
+
+Write a function printList(struct Node *head)
+→ Traverse and print values until NULL is reached.
+
+🧠 Expected Output
+Linked List: 10 -> 20 -> 30 -> NULL
+
+💡 Hints
+
+You’ll need <stdio.h> and <stdlib.h>.
+
+malloc returns a void* → cast it to (struct Node*).
+
+Don’t forget to set the next of the last node to NULL.
+
+You can traverse using a temporary pointer, e.g.:
+
+struct Node* temp = head;
+while (temp != NULL) {
+    printf("%d -> ", temp->data);
+    temp = temp->next;
+}
+
+
+🧰 Bonus (Optional)
+
+After it works:
+
+Add a 4th node without changing other code.
+
+Try changing the data type of data from int to char or float and observe.

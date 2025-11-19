@@ -1,0 +1,132 @@
+⚔️ Phase 3: Data Structures in C — 100% Challenge-Based Roadmap
+
+Each topic has 3 levels:
+
+🟢 Core → Build the structure from scratch
+
+🟡 Intermediate → Add operations, optimizations
+
+🔴 Advanced → Apply it in real-world logic or problem-solving
+
+🧩 Week 1–2: Linked Lists
+Challenge 1 — Build Your First Singly Linked List
+
+Create a struct Node and manually link nodes using pointers.
+Goal: Print all values in order.
+
+Challenge 2 — Implement list.append()
+
+Add a function that appends elements to the end of a linked list.
+
+Challenge 3 — Insert Anywhere
+
+Add a function that inserts at any position (head, middle, tail).
+
+Challenge 4 — Reverse It!
+
+Reverse the linked list in place (without creating a new list).
+
+Challenge 5 — Detect Loop
+
+Create a loop intentionally and write code to detect it (Floyd’s algorithm).
+
+Bonus:
+
+Convert your singly list to doubly and circular linked lists.
+
+🧠 Week 3–4: Stacks & Queues
+Challenge 6 — Stack Using Array
+
+Implement push, pop, peek, isEmpty, isFull.
+
+Challenge 7 — Stack Using Linked List
+
+Same operations, but with nodes.
+
+Challenge 8 — Balanced Parentheses Checker
+
+Validate if “(a+b)” or “((a+b])” is balanced using stack.
+
+Challenge 9 — Queue Using Array
+
+Implement enqueue, dequeue, peek, and handle overflow/underflow.
+
+Challenge 10 — Circular Queue
+
+Implement circular queue logic (front and rear wrap-around).
+
+🌳 Week 5–6: Trees
+Challenge 11 — Binary Tree Creation
+
+Build a binary tree manually, node by node, using struct pointers.
+
+Challenge 12 — Traversals (Recursive + Iterative)
+
+Preorder, Inorder, Postorder traversal.
+
+Challenge 13 — Binary Search Tree (BST)
+
+Insert, search, and delete nodes in a BST.
+
+Challenge 14 — Height of a Tree
+
+Write a function to find the height recursively.
+
+Challenge 15 — Level Order Traversal
+
+Implement BFS traversal of a tree using a queue.
+
+🕸️ Week 7–8: Graphs
+Challenge 16 — Graph Representation
+
+Build a graph using adjacency list.
+
+Challenge 17 — Depth First Search (DFS)
+
+Implement DFS using stack or recursion.
+
+Challenge 18 — Breadth First Search (BFS)
+
+Implement BFS using queue.
+
+Challenge 19 — Maze Solver (BFS Special)
+
+Represent a maze as a grid, and find shortest path using BFS.
+
+Challenge 20 — Cycle Detection
+
+Detect if a directed/undirected graph contains a cycle.
+
+⚙️ Week 9–10: Sorting & Searching
+Challenge 21 — Linear & Binary Search
+
+Implement both search types manually.
+
+Challenge 22 — Bubble Sort
+
+Sort array step-by-step and count swaps.
+
+Challenge 23 — Merge Sort
+
+Implement recursive merge sort.
+
+Challenge 24 — Quick Sort
+
+Implement quick sort with pivot and recursion.
+
+Challenge 25 — Dictionary with Hash Table
+
+Build a key–value store using hashing and linked lists for collision.
+
+🏁 Week 11–12: Capstone Challenges
+Challenge 26 — DS Playground
+
+Menu-driven console app: user chooses a DS (stack, queue, tree, etc.), performs operations interactively.
+
+Challenge 27 — Maze Solver 2.0
+
+Enhanced BFS + backtracking to print the path visually (grid output).
+
+Challenge 28 — Mini Memory Manager
+
+Use linked list to simulate malloc/free allocation tracking.

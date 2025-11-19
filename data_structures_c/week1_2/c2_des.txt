@@ -1,0 +1,89 @@
+Doubly Linked List (DLL)
+🎯 Goal
+
+Implement a Doubly Linked List (DLL) from scratch — where each node links forward and backward.
+
+You’ll learn how two-way pointers work and how to efficiently manage insertions/deletions from both ends.
+
+🧠 What You’ll Learn
+
+Handling multiple pointers (prev + next)
+
+Insertion logic at head, middle, and tail
+
+Safe deletion with pointer updates both ways
+
+Traversing in forward and reverse order
+
+📋 Requirements
+
+Define a struct Node:
+
+typedef struct Node {
+    int data;
+    struct Node *prev;
+    struct Node *next;
+} Node;
+
+Define a struct DoublyLinkedList:
+
+typedef struct {
+    Node *head;
+    Node *tail;
+    int size;
+} DoublyLinkedList;
+
+Implement these functions:
+
+append(DoublyLinkedList *dll, int value)
+→ Add new node at the end
+
+prepend(DoublyLinkedList *dll, int value)
+→ Add new node at the beginning
+
+insertAt(DoublyLinkedList *dll, int index, int value)
+→ Insert at a specific index
+
+removeValue(DoublyLinkedList *dll, int value)
+→ Remove the first node that matches
+
+printForward(DoublyLinkedList *dll)
+→ Traverse from head to tail
+
+printBackward(DoublyLinkedList *dll)
+→ Traverse from tail to head
+
+💡 Hints
+
+When inserting:
+
+If inserting at head → prev = NULL, adjust head.
+
+If inserting at tail → next = NULL, adjust tail.
+
+For middle insertions → handle both prev->next and next->prev.
+
+For removal:
+
+Update both links (prev->next and next->prev).
+
+Handle special cases: deleting head, tail, or single-node list.
+
+Don’t forget to free() the node after removal.
+
+🧩 Expected Output Example
+
+Forward: 10 <-> 20 <-> 30 <-> NULL
+Backward: 30 <-> 20 <-> 10 <-> NULL
+
+After removing 20:
+Forward: 10 <-> 30 <-> NULL
+Backward: 30 <-> 10 <-> NULL
+
+⚙️ Bonus Challenge
+
+Implement clear(DoublyLinkedList *dll) → frees all nodes.
+
+Add a find(int value) → returns pointer to node if found.
+
+Make it generic like your previous LinkedList (with enum Type and function pointers).
